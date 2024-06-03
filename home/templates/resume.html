@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #eef2f3;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+
+        .header h3 {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left,
+        .right {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .left h2,
+        .right h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .left p,
+        .right p,
+        .left ul,
+        .right ul {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .left ul,
+        .right ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .left h3,
+        .right h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        .btn1 {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn1:hover {
+            background-color: #3498db;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section p,
+        .section ul {
+            margin-left: 20px;
+        }
+
+        .section ul {
+            padding-left: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .section h3 {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; color: #2980b9; font-size: 36px; margin-bottom: 20px;">Online Resume Builder</h1>
+    <div id="mn" class="container">
+        <div class="header">
+            <h1>{{ name }}</h1>
+            <h3>{{ about }}</h3>
+        </div>
+        <div class="main">
+            <div class="left">
+                {% if name or age or email or phone %}
+                <div class="section">
+                    <h2>Personal Information</h2>
+                    {% if name %}<p><strong>Name:</strong> {{ name }}</p>{% endif %}
+                    {% if age %}<p><strong>Age:</strong> {{ age }}</p>{% endif %}
+                    {% if email %}<p><strong>Email:</strong> {{ email }}</p>{% endif %}
+                    {% if phone %}<p><strong>Phone:</strong> +91-{{ phone }}</p>{% endif %}
+                </div>
+                {% endif %}
+
+                {% if skill1 or skill2 or skill3 or skill4 or skill5 %}
+                <div class="section">
+                    <h2>Skills</h2>
+                    <ul>
+                        {% if skill1 %}<li>{{ skill1 }}</li>{% endif %}
+                        {% if skill2 %}<li>{{ skill2 }}</li>{% endif %}
+                        {% if skill3 %}<li>{{ skill3 }}</li>{% endif %}
+                        {% if skill4 %}<li>{{ skill4 }}</li>{% endif %}
+                        {% if skill5 %}<li>{{ skill5 }}</li>{% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if degree1 or college1 or year1 or degree2 or college2 or year2 or degree3 or college3 or year3 %}
+                <div class="section">
+                    <h2>Education</h2>
+                    {% if degree1 or college1 or year1 %}
+                    <h3>{{ degree1 }}</h3>
+                    <p>{{ college1 }}</p>
+                    <p>{{ year1 }}</p>
+                    {% endif %}
+
+                    {% if degree2 or college2 or year2 %}
+                    <h3>{{ degree2 }}</h3>
+                    <p>{{ college2 }}</p>
+                    <p>{{ year2 }}</p>
+                    {% endif %}
+
+                    {% if degree3 or college3 or year3 %}
+                    <h3>{{ degree3 }}</h3>
+                    <p>{{ college3 }}</p>
+                    <p>{{ year3 }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if lang1 or lang2 or lang3 %}
+                <div class="section">
+                    <h2>Languages</h2>
+                    <ul>
+                        {% if lang1 %}<li>{{ lang1 }}</li>{% endif %}
+                        {% if lang2 %}<li>{{ lang2 }}</li>{% endif %}
+                        {% if lang3 %}<li>{{ lang3 }}</li>{% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <div class="right">
+                {% if project1 or project2 %}
+                <div class="section">
+                    <h2>Projects</h2>
+                    {% if project1 %}
+                    <h3>{{ project1 }}</h3>
+                    <p><strong>Duration:</strong> {{ durat1 }}</p>
+                    <ul>
+                        {% if desc1 %}<li>{{ desc1 }}</li>{% endif %}
+                    </ul>
+                    {% endif %}
+
+                    {% if project2 %}
+                    <h3>{{ project2 }}</h3>
+                    <p><strong>Duration:</strong> {{ durat2 }}</p>
+                    <ul>
+                        {% if desc2 %}<li>{{ desc2 }}</li>{% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if company1 or company2 %}
+                <div class="section">
+                    <h2>Work Experience</h2>
+                    {% if company1 %}
+                    <h3>{{ company1 }}</h3>
+                    <p><strong>Position:</strong> {{ post1 }}</p>
+                    <p><strong>Duration:</strong> {{ duration1 }}</p>
+                    <ul>
+                        {% if lin11 %}<li>{{ lin11 }}</li>{% endif %}
+                    </ul>
+                    {% endif %}
+
+                    {% if company2 %}
+                    <h3>{{ company2 }}</h3>
+                    <p><strong>Position:</strong> {{ post2 }}</p>
+                    <p><strong>Duration:</strong> {{ duration2 }}</p>
+                    <ul>
+                        {% if lin21 %}<li>{{ lin21 }}</li>{% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if ach1 or ach2 or ach3 %}
+                <div class="section">
+                    <h2>Achievements</h2>
+                    <ul>
+                        {% if ach1 %}<li>{{ ach1 }}</li>{% endif %}
+                        {% if ach2 %}<li>{{ ach2 }}</li>{% endif %}
+                        {% if ach3 %}<li>{{ ach3 }}</li>{% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <button onclick="generatePDF('mn')" type="button" class="btn1">Download PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+    <script type="text/javascript">
+        function generatePDF(containerId) {
+            const container = document.getElementById(containerId);
+            const opt = {
+                margin: 1,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().from(container).set(opt).save();
+        }
+    </script>
+</body>
+
+</html>
